@@ -1,0 +1,82 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Home_work1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random rnd = new Random();
+            int[] A = new int[5];
+            float[,] B = new float[3, 4];
+            int sumA = 0;
+            int evenSumA = 0;
+            float sumB = 0;
+            float sumColomsB = 0;
+            for (int i = 0; i < A.Length; i++)
+            {
+                A[i] = int.Parse(Console.ReadLine());
+                sumA += A[i];
+                if (A[i] % 2 == 0)
+                {
+                    evenSumA += A[i];
+                }
+            }
+            Console.WriteLine("\nArray A:");
+            for (int i = 0; i < A.Length; i++)
+            {
+                Console.Write(A[i] + " ");
+            }
+            Console.WriteLine("\nArray B:");
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    B[i, j] = rnd.Next(9);
+                    sumB += B[i, j];
+                    if (j % 2 == 1)
+                    {
+                        sumColomsB += B[i, j];
+                    }
+                }
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    Console.Write(B[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("Max element of array A = " + A.Max());
+            Console.WriteLine("Max element of array B = " + B.Cast<float>().Max());
+            if ((Convert.ToInt32(B.Cast<float>().Max())) == (A.Max()))
+            {
+                Console.WriteLine("Max same element in array A and B = " + A.Max());
+            }
+            else
+            {
+                Console.WriteLine("No same max elements in array A and B ");
+            }
+            Console.WriteLine("Min element of array A = " + A.Min());
+            Console.WriteLine("Min element of array B = " + B.Cast<float>().Min());
+            if ((Convert.ToInt32(B.Cast<float>().Min())) == (A.Min()))
+            {
+                Console.WriteLine("Max same element in array A and B = " + A.Min());
+            }
+            else
+            {
+                Console.WriteLine("No same min elements in array A and B ");
+            }
+            Console.WriteLine("Sum of all elements in array A = " + sumA);
+            Console.WriteLine("Sum of all elements in array B = " + sumB);
+            Console.WriteLine("Sum of even elements in array A = " + evenSumA);
+            Console.WriteLine("Sum of not even columns in array B = " + sumColomsB);
+        }
+    }
+}
