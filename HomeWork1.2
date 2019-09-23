@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Home_work1._2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random rnd = new Random();
+            int n,m;
+            Console.WriteLine("Enter size of A array: ");
+            n = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter size of B array: ");
+            m = int.Parse(Console.ReadLine());
+            int count = 0;
+            int[] A = new int[n];
+            int[] B = new int[m];
+            for (int i = 0; i < A.Length; i++)
+            {
+                A[i] = rnd.Next(10);
+            }
+            for (int i = 0; i < B.Length; i++)
+            {
+                B[i] = rnd.Next(10);
+                for (int j = 0; j < A.Length; j++)
+                {
+                    if (B[i] == A[j])
+                    {
+                        count++;
+                    }
+                }
+            }
+            Console.WriteLine("\nArray A:");
+            for (int i = 0; i < A.Length; i++)
+            {
+                Console.Write(A[i] + " ");
+            }
+            Console.WriteLine("\nArray B:");
+            for (int i = 0; i < B.Length; i++)
+            {
+                Console.Write(B[i] + " ");
+            }
+            if (count != 0)
+            {
+                int[] C = new int[count];
+                int k = 0;
+                for (int i = 0; i < A.Length; i++)
+                {
+                    for (int j = 0; j < B.Length; j++)
+                    {
+                        if ((A[i] == B[j]) && (!C.Contains(A[i])))
+                        {
+                            C[k] = A[i];
+                            k++;
+                        }
+                    }
+                }
+                Array.Resize(ref C, k);
+                Console.WriteLine("\nUnited array C:");
+                for (int i = 0; i < C.Length; i++)
+                {
+                    Console.Write(C[i] + " ");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Общих элементов в массивах нет");
+            }
+        }
+    }
+}
