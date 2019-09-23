@@ -1,0 +1,69 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HomeWork1._5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[,] B = new int[5, 5];
+            int sumB = 0, max = B[0, 0], min = B[0, 0];
+            int oi = 0, lj = 0, ei = 0, gj = 0;
+            bool count = false;
+            Random rand = new Random();
+            {
+                Console.WriteLine("Array: ");
+                for (int i = 0; i < B.GetLength(0); i++)
+                {
+                    for (int j = 0; j < B.GetLength(1); j++)
+                    {
+                        B[i, j] = rand.Next(-100, 100);
+                        if (max < B[i, j])
+                        {
+                            max = B[i, j];
+                            oi = i;
+                            lj = j;
+                        }
+                        if (min > B[i, j])
+                        {
+                            min = B[i, j];
+                            ei = i;
+                            gj = j;
+                        }
+                        Console.Write(B[i, j] + "\t");
+                    }
+                }
+                for (int i = 0; i < B.GetLength(0); i++)
+                {
+                    for (int j = 0; j < B.GetLength(1); j++)
+                    {
+                        if ((i == oi && j == lj) || (i == ei && j == gj))
+                        {
+                            if (count)
+                            {
+                                count = false;
+                                continue;
+                            }
+                            else
+                            {
+                                count = true;
+                                continue;
+                            }
+                        }
+                        if (count)
+                        {
+                            sumB += B[i, j];
+                        }
+                    }
+                }
+                Console.WriteLine("Max element in array = " + max);
+                Console.WriteLine("Min element in array B = " + min);
+                Console.WriteLine("Sum of elements between Min and Max elements of array = " + sumB);
+            }
+        }
+    }
+}
