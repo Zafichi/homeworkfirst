@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HomeWork1._3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the string:");
+            string str = Console.ReadLine();
+            char[] temp = new char[str.Length];
+            int j = 0, countNull = 0;
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (str[i] == ' ')
+                {
+                    countNull++;
+                    continue;
+                }
+                temp[j] = str[i];
+                j++;
+            }
+            Array.Resize(ref temp, str.Length - countNull);
+            string output = new string(temp);
+            Console.WriteLine(str);
+            str = output;
+            output = new string(output.ToCharArray().Reverse().ToArray());
+            if (String.Compare(str, output, true) == 0)
+            {
+                Console.WriteLine("Your string is polindrom!)");
+            }
+            else
+            {
+                Console.WriteLine("Your string is polindrom!Call the police!");
+            }
+        }
+    }
+}
